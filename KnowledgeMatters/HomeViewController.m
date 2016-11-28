@@ -45,6 +45,8 @@
         NSURL * imageFromFace = user.photoURL;
 
         [self loadImageFromURL:imageFromFace.absoluteString];
+        
+        NSLog(@"%@", name); 
 
         
         // The user's ID, unique to the Firebase
