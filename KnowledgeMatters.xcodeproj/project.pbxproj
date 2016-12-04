@@ -11,6 +11,10 @@
 		BA5AC8CEBD3500D3CC321D4A /* libPods-KnowledgeMatters.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B39CA1FE8A9DE2ECC97869F8 /* libPods-KnowledgeMatters.a */; };
 		C40511C81DE1F38B000043CF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40511C71DE1F38B000043CF /* LoginViewController.m */; };
 		C40511CB1DE1F39A000043CF /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40511CA1DE1F39A000043CF /* HomeViewController.m */; };
+		C410E0A51DF0C20F00C24118 /* BlogsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410E0A41DF0C20F00C24118 /* BlogsCollectionViewController.m */; };
+		C410E0A81DF0D66E00C24118 /* ComposeSkillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410E0A71DF0D66E00C24118 /* ComposeSkillTableViewController.m */; };
+		C47662B91DEF884000E70786 /* UserSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47662B81DEF884000E70786 /* UserSettingsTableViewController.m */; };
+		C47662BB1DEF8C0600E70786 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47662BA1DEF8C0600E70786 /* MapKit.framework */; };
 		C48E94D81DECEBDF005836B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C48E94D71DECEBDF005836B0 /* GoogleService-Info.plist */; };
 		C48E94DB1DECF4F0005836B0 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C48E94DA1DECF4F0005836B0 /* NSString+MD5.m */; };
 		C4E7DCF91DECF551008156C2 /* FTWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E7DCF81DECF551008156C2 /* FTWCache.m */; };
@@ -56,6 +60,13 @@
 		C40511C91DE1F39A000043CF /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C40511CA1DE1F39A000043CF /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C40511CC1DE1F5DE000043CF /* KnowledgeMatters.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KnowledgeMatters.entitlements; sourceTree = "<group>"; };
+		C410E0A31DF0C20F00C24118 /* BlogsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogsCollectionViewController.h; sourceTree = "<group>"; };
+		C410E0A41DF0C20F00C24118 /* BlogsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogsCollectionViewController.m; sourceTree = "<group>"; };
+		C410E0A61DF0D66E00C24118 /* ComposeSkillTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeSkillTableViewController.h; sourceTree = "<group>"; };
+		C410E0A71DF0D66E00C24118 /* ComposeSkillTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeSkillTableViewController.m; sourceTree = "<group>"; };
+		C47662B71DEF884000E70786 /* UserSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTableViewController.h; sourceTree = "<group>"; };
+		C47662B81DEF884000E70786 /* UserSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTableViewController.m; sourceTree = "<group>"; };
+		C47662BA1DEF8C0600E70786 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C48E94D71DECEBDF005836B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C48E94D91DECF4E5005836B0 /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		C48E94DA1DECF4F0005836B0 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
@@ -85,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47662BB1DEF8C0600E70786 /* MapKit.framework in Frameworks */,
 				BA5AC8CEBD3500D3CC321D4A /* libPods-KnowledgeMatters.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +123,7 @@
 		46864B684D3F8902AA33498F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C47662BA1DEF8C0600E70786 /* MapKit.framework */,
 				B39CA1FE8A9DE2ECC97869F8 /* libPods-KnowledgeMatters.a */,
 				91C3A41A8C8A4974FC8203BB /* libPods-KnowledgeMattersTests.a */,
 				26CAB834A6935B009D0CA931 /* libPods-KnowledgeMattersUITests.a */,
@@ -129,6 +142,36 @@
 				0CB7063A62258787A7642641 /* Pods-KnowledgeMattersUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C410E0A11DF0C17A00C24118 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C4F37E211DE1E25700558AC7 /* ViewController.h */,
+				C4F37E221DE1E25700558AC7 /* ViewController.m */,
+				C40511C61DE1F38B000043CF /* LoginViewController.h */,
+				C40511C71DE1F38B000043CF /* LoginViewController.m */,
+				C40511C91DE1F39A000043CF /* HomeViewController.h */,
+				C40511CA1DE1F39A000043CF /* HomeViewController.m */,
+				C47662B71DEF884000E70786 /* UserSettingsTableViewController.h */,
+				C47662B81DEF884000E70786 /* UserSettingsTableViewController.m */,
+				C410E0A61DF0D66E00C24118 /* ComposeSkillTableViewController.h */,
+				C410E0A71DF0D66E00C24118 /* ComposeSkillTableViewController.m */,
+				C410E0A31DF0C20F00C24118 /* BlogsCollectionViewController.h */,
+				C410E0A41DF0C20F00C24118 /* BlogsCollectionViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C410E0A21DF0C19500C24118 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				C4E7DCF71DECF551008156C2 /* FTWCache.h */,
+				C4E7DCF81DECF551008156C2 /* FTWCache.m */,
+				C48E94D91DECF4E5005836B0 /* NSString+MD5.h */,
+				C48E94DA1DECF4F0005836B0 /* NSString+MD5.m */,
+			);
+			name = DataModel;
 			sourceTree = "<group>";
 		};
 		C4F37E0F1DE1E25700558AC7 = {
@@ -159,21 +202,9 @@
 				C40511CC1DE1F5DE000043CF /* KnowledgeMatters.entitlements */,
 				C4F37E1E1DE1E25700558AC7 /* AppDelegate.h */,
 				C4F37E1F1DE1E25700558AC7 /* AppDelegate.m */,
-				C4F37E211DE1E25700558AC7 /* ViewController.h */,
-				C4F37E221DE1E25700558AC7 /* ViewController.m */,
-				C40511C61DE1F38B000043CF /* LoginViewController.h */,
-				C40511C71DE1F38B000043CF /* LoginViewController.m */,
-				C40511C91DE1F39A000043CF /* HomeViewController.h */,
-				C40511CA1DE1F39A000043CF /* HomeViewController.m */,
-				C4E7DCF71DECF551008156C2 /* FTWCache.h */,
-				C4E7DCF81DECF551008156C2 /* FTWCache.m */,
-				C48E94D91DECF4E5005836B0 /* NSString+MD5.h */,
-				C48E94DA1DECF4F0005836B0 /* NSString+MD5.m */,
+				C410E0A11DF0C17A00C24118 /* Controllers */,
+				C410E0A21DF0C19500C24118 /* DataModel */,
 				C4F37E241DE1E25700558AC7 /* Main.storyboard */,
-				C4F37E271DE1E25700558AC7 /* Assets.xcassets */,
-				C4F37E291DE1E25700558AC7 /* LaunchScreen.storyboard */,
-				C48E94D71DECEBDF005836B0 /* GoogleService-Info.plist */,
-				C4F37E2C1DE1E25700558AC7 /* Info.plist */,
 				C4F37E1B1DE1E25700558AC7 /* Supporting Files */,
 			);
 			path = KnowledgeMatters;
@@ -183,6 +214,10 @@
 			isa = PBXGroup;
 			children = (
 				C4F37E1C1DE1E25700558AC7 /* main.m */,
+				C4F37E271DE1E25700558AC7 /* Assets.xcassets */,
+				C4F37E291DE1E25700558AC7 /* LaunchScreen.storyboard */,
+				C48E94D71DECEBDF005836B0 /* GoogleService-Info.plist */,
+				C4F37E2C1DE1E25700558AC7 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -495,9 +530,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C48E94DB1DECF4F0005836B0 /* NSString+MD5.m in Sources */,
+				C47662B91DEF884000E70786 /* UserSettingsTableViewController.m in Sources */,
 				C40511C81DE1F38B000043CF /* LoginViewController.m in Sources */,
 				C4F37E231DE1E25700558AC7 /* ViewController.m in Sources */,
+				C410E0A51DF0C20F00C24118 /* BlogsCollectionViewController.m in Sources */,
 				C4F37E201DE1E25700558AC7 /* AppDelegate.m in Sources */,
+				C410E0A81DF0D66E00C24118 /* ComposeSkillTableViewController.m in Sources */,
 				C40511CB1DE1F39A000043CF /* HomeViewController.m in Sources */,
 				C4F37E1D1DE1E25700558AC7 /* main.m in Sources */,
 				C4E7DCF91DECF551008156C2 /* FTWCache.m in Sources */,

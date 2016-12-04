@@ -11,7 +11,11 @@
 #import <FBSDKCoreKit.h>
 @import Firebase;
 
-@interface HomeViewController ()
+@interface HomeViewController (){
+    
+    NSArray *recipePhotos;
+}
+
 
 @end
 
@@ -23,7 +27,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
+    // Initialize recipe image array
+    recipePhotos = [NSArray arrayWithObjects:@"angry_birds_cake.jpg", @"creme_brelee.jpg", @"egg_benedict.jpg", @"full_breakfast.jpg", @"green_tea.jpg", @"ham_and_cheese_panini.jpg", @"ham_and_egg_sandwich.jpg", @"hamburger.jpg", @"instant_noodle_with_egg.jpg", @"japanese_noodle_with_pork.jpg", @"mushroom_risotto.jpg", @"noodle_with_bbq_pork.jpg", @"starbucks_coffee.jpg", @"thai_shrimp_cake.jpg", @"vegetable_curry.jpg", @"white_chocolate_donut.jpg", nil];
+    
     // Do any additional setup after loading the view.
     
     [FBSDKAppEvents logEvent:@"HomeSucces"];
@@ -62,6 +69,8 @@
     }
 }
 
+
+
 - (void) loadImageFromURL:(NSString*)URL {
     
     FIRUser *user = [FIRAuth auth].currentUser;
@@ -91,6 +100,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - Collection view data source
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return recipePhotos.count;
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identifier = @"Cell";
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+    recipeImageView.image = [UIImage imageNamed:[recipePhotos objectAtIndex:indexPath.row]];
+    
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation
@@ -102,4 +129,6 @@
 }
 */
 
+- (IBAction)EditingBlogProfileButton:(id)sender {
+}
 @end
