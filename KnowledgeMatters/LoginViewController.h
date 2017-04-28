@@ -8,15 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <AVKit/AVKit.h>
+#import "CustomLoginViewController.h"
 
 
-@interface LoginViewController : UIViewController<FBSDKLoginButtonDelegate, UITextFieldDelegate>
-
-@property (weak, nonatomic) IBOutlet UITextField *userTextField;
-
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-
-
-- (IBAction)loginButton:(id)sender;
+@interface LoginViewController : AVPlayerViewController<FBSDKLoginButtonDelegate, UITextFieldDelegate>
 
 @end

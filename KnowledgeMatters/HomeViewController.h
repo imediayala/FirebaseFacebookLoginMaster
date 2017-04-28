@@ -14,5 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 - (IBAction)EditingBlogProfileButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editingButtonProperty;
-
+ ///
 @end

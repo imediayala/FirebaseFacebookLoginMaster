@@ -7,10 +7,17 @@
 //
 
 #import "ComposeSkillTableViewController.h"
+#import "SkillDataModel.h"
 @import Firebase;
 
 
 @interface ComposeSkillTableViewController ()
+
+@property(strong,nonatomic) NSString* nameSkill;
+@property(strong,nonatomic) NSString* descriptionSkill;
+@property BOOL isPrivate;
+@property(strong,nonatomic) SkillDataModel * skillsApi;
+
 
 @end
 
@@ -19,21 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     self.ref = [[FIRDatabase database] reference];
-    
-    
-    //1 Add user to database
-    
-    
-    FIRUser *user = [FIRAuth auth].currentUser;
-    
-    [[[_ref child:@"users"] child:user.uid]
-     setValue:@{@"username": @"pepi"}];
- 
-    
-    // Uncomment the following line to preserve selection between presentations.
+    _skillsApi = [[SkillDataModel alloc] init];
+    [_skillsApi setDelegate:self];
+
+
+     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -45,10 +43,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)initValues{
+    
+    
+   }
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -113,6 +116,22 @@
 }
 - (IBAction)sendButton:(id)sender {
     
+    
+    [self.skillsApi sendPost:_skillNameLabel.text andDescription:_skillDescriptionTextField.text];
+    
+
+
+//       NSString *userID = [FIRAuth auth].currentUser.uid;
+//    FIRUser *user = [FIRAuth auth].currentUser;
+//    
+//     [[[_ref child:@"skills"] child:user.uid]
+//     setValue:@{@"username": user.displayName,
+//                @"skillname":self.skillNameLabel.text,
+//                @"skilldescription": self.skillDescriptionTextField.text}];
+//    
+//    
+//
+//    
     
     [ self dismissViewControllerAnimated:YES completion:nil];
 }
