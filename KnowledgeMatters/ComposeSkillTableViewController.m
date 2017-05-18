@@ -8,13 +8,17 @@
 
 #import "ComposeSkillTableViewController.h"
 #import "SkillDataModel.h"
+#import "Constants.h"
 @import Firebase;
+@import Photos;
+
 
 
 @interface ComposeSkillTableViewController ()
 
 @property(strong,nonatomic) NSString* nameSkill;
 @property(strong,nonatomic) NSString* descriptionSkill;
+@property(nonatomic,strong) NSString *urlFromPicker;
 @property BOOL isPrivate;
 @property(strong,nonatomic) SkillDataModel * skillsApi;
 
@@ -29,6 +33,24 @@
     self.ref = [[FIRDatabase database] reference];
     _skillsApi = [[SkillDataModel alloc] init];
     [_skillsApi setDelegate:self];
+    [self configureStorage];
+    
+    
+    FIRUser *user = [FIRAuth auth].currentUser;
+    if (user != nil) {
+        NSString *name = user.displayName;
+        NSString *email = user.email;
+        NSURL *photoUrl = user.photoURL;
+        
+        //NSString *formatToString = [photoUrl absoluteString];
+        NSData *imageData = [NSData dataWithContentsOfURL:photoUrl];
+        self.imageBox.image = [UIImage imageWithData:imageData];
+        //
+    } else {
+        
+        // No user is signed in.
+    }
+
 
 
      // Uncomment the following line to preserve selection between presentations.
@@ -36,7 +58,13 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
+
+- (void)configureStorage {
+    self.storageRef = [[FIRStorage storage] referenceForURL:@"gs://knowledge-150922.appspot.com/"];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -55,7 +83,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 /*
@@ -117,22 +145,88 @@
 - (IBAction)sendButton:(id)sender {
     
     
-    [self.skillsApi sendPost:_skillNameLabel.text andDescription:_skillDescriptionTextField.text];
+ [self.skillsApi sendPost:_skillNameLabel.text andDescription:_skillDescriptionTextField.text urlFromPicker:self.urlFromPicker];
     
+// [self.skillsApi sendCoverImage:@{MessageFieldsphotoUrl:
+//                            self.urlFromPicker}];
 
-
-//       NSString *userID = [FIRAuth auth].currentUser.uid;
-//    FIRUser *user = [FIRAuth auth].currentUser;
-//    
-//     [[[_ref child:@"skills"] child:user.uid]
-//     setValue:@{@"username": user.displayName,
-//                @"skillname":self.skillNameLabel.text,
-//                @"skilldescription": self.skillDescriptionTextField.text}];
-//    
-//    
-//
-//    
     
     [ self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)sendCoverImage:(NSDictionary *)data {
+
+    NSMutableDictionary *mdata = [data mutableCopy];
+    FIRUser *user = [FIRAuth auth].currentUser;
+
+    NSString  *userName = user.displayName;
+    mdata[MessageFieldsname] = userName;
+
+    // Push data to Firebase Database
+    [[[_ref child:@"SkillsCover"] childByAutoId] setValue:mdata];
+
+
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self.activitySpinner startAnimating];
+
+    NSURL *referenceUrl = info[UIImagePickerControllerReferenceURL];
+    PHFetchResult* assets = [PHAsset fetchAssetsWithALAssetURLs:@[referenceUrl] options:nil];
+    PHAsset *asset = [assets firstObject];
+    [asset requestContentEditingInputWithOptions:nil
+                               completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
+                                   NSURL *imageFile = contentEditingInput.fullSizeImageURL;
+                                   NSString *filePath = [NSString stringWithFormat:@"%@/%lld/%@", [FIRAuth auth].currentUser.uid, (long long)([[NSDate date] timeIntervalSince1970] * 1000.0), [referenceUrl lastPathComponent]];
+                                   FIRStorageMetadata *metadata = [FIRStorageMetadata new];
+                                   metadata.contentType = @"image/jpeg";
+                                   [[_storageRef child:filePath]
+                                    putFile:imageFile metadata:metadata
+                                    completion:^(FIRStorageMetadata *metadata, NSError *error) {
+                                        if (error) {
+                                            NSLog(@"Error uploading: %@", error);
+                                            return;
+                                        }
+                                        
+                                        [self.activitySpinner stopAnimating];
+                                        self.urlFromPicker = metadata.downloadURL.absoluteString;
+                                         [self sendCoverImage:@{MessageFieldsphotoUrl:
+                                                                    metadata.downloadURL.absoluteString}];
+                                        
+                                    }
+                                    ];
+                               }];
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+
+    
+}
+
+- (IBAction)chooseImageButton:(id)sender {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+- (IBAction)takePhotoButton:(id)sender {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 @end

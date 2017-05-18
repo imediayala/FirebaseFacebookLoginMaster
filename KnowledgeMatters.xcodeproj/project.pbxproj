@@ -13,6 +13,8 @@
 		C40511CB1DE1F39A000043CF /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40511CA1DE1F39A000043CF /* HomeViewController.m */; };
 		C410E0A51DF0C20F00C24118 /* BlogsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410E0A41DF0C20F00C24118 /* BlogsCollectionViewController.m */; };
 		C410E0A81DF0D66E00C24118 /* ComposeSkillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410E0A71DF0D66E00C24118 /* ComposeSkillTableViewController.m */; };
+		C419B6351EBD091800950E30 /* Motivational.mov in Resources */ = {isa = PBXBuildFile; fileRef = C419B6341EBD091800950E30 /* Motivational.mov */; };
+		C42C25741EC8ABBE00962291 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C42C25731EC8ABBE00962291 /* Constants.m */; };
 		C43877C61E9029C200CBADA8 /* SignInMailButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C43877B91E9029C200CBADA8 /* SignInMailButton.png */; };
 		C43877C71E9029C200CBADA8 /* SignInMailButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C43877BA1E9029C200CBADA8 /* SignInMailButton@2x.png */; };
 		C43877C81E9029C200CBADA8 /* SignInMailButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = C43877BB1E9029C200CBADA8 /* SignInMailButtonTap.png */; };
@@ -40,11 +42,11 @@
 		C48E94DB1DECF4F0005836B0 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C48E94DA1DECF4F0005836B0 /* NSString+MD5.m */; };
 		C49540E91E9065180066D787 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C49540E81E9065180066D787 /* User.m */; };
 		C4CB58DD1E807D0E0066A047 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = C4CB58DC1E807D0E0066A047 /* video.mov */; };
+		C4E2C6FA1ECA497D00ECD4A5 /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E2C6F91ECA497D00ECD4A5 /* HomeCollectionViewCell.m */; };
 		C4E7DCF91DECF551008156C2 /* FTWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E7DCF81DECF551008156C2 /* FTWCache.m */; };
 		C4E92FF01EB3DBD8000947FD /* icoFormularioPrincipal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E92FEF1EB3DBD8000947FD /* icoFormularioPrincipal@2x.png */; };
 		C4F37E1D1DE1E25700558AC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F37E1C1DE1E25700558AC7 /* main.m */; };
 		C4F37E201DE1E25700558AC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F37E1F1DE1E25700558AC7 /* AppDelegate.m */; };
-		C4F37E231DE1E25700558AC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F37E221DE1E25700558AC7 /* ViewController.m */; };
 		C4F37E261DE1E25700558AC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4F37E241DE1E25700558AC7 /* Main.storyboard */; };
 		C4F37E281DE1E25700558AC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4F37E271DE1E25700558AC7 /* Assets.xcassets */; };
 		C4F37E2B1DE1E25700558AC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4F37E291DE1E25700558AC7 /* LaunchScreen.storyboard */; };
@@ -88,6 +90,9 @@
 		C410E0A41DF0C20F00C24118 /* BlogsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogsCollectionViewController.m; sourceTree = "<group>"; };
 		C410E0A61DF0D66E00C24118 /* ComposeSkillTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeSkillTableViewController.h; sourceTree = "<group>"; };
 		C410E0A71DF0D66E00C24118 /* ComposeSkillTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeSkillTableViewController.m; sourceTree = "<group>"; };
+		C419B6341EBD091800950E30 /* Motivational.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Motivational.mov; sourceTree = "<group>"; };
+		C42C25721EC8ABBE00962291 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C42C25731EC8ABBE00962291 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		C43877B91E9029C200CBADA8 /* SignInMailButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignInMailButton.png; sourceTree = "<group>"; };
 		C43877BA1E9029C200CBADA8 /* SignInMailButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SignInMailButton@2x.png"; sourceTree = "<group>"; };
 		C43877BB1E9029C200CBADA8 /* SignInMailButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignInMailButtonTap.png; sourceTree = "<group>"; };
@@ -117,6 +122,8 @@
 		C49540E71E9065180066D787 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		C49540E81E9065180066D787 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C4CB58DC1E807D0E0066A047 /* video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video.mov; sourceTree = "<group>"; };
+		C4E2C6F81ECA497D00ECD4A5 /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
+		C4E2C6F91ECA497D00ECD4A5 /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
 		C4E7DCF71DECF551008156C2 /* FTWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTWCache.h; sourceTree = "<group>"; };
 		C4E7DCF81DECF551008156C2 /* FTWCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTWCache.m; sourceTree = "<group>"; };
 		C4E92FEF1EB3DBD8000947FD /* icoFormularioPrincipal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icoFormularioPrincipal@2x.png"; sourceTree = "<group>"; };
@@ -124,8 +131,6 @@
 		C4F37E1C1DE1E25700558AC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C4F37E1E1DE1E25700558AC7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4F37E1F1DE1E25700558AC7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C4F37E211DE1E25700558AC7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C4F37E221DE1E25700558AC7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C4F37E251DE1E25700558AC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4F37E271DE1E25700558AC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4F37E2A1DE1E25700558AC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -195,24 +200,21 @@
 		C410E0A11DF0C17A00C24118 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C4F37E211DE1E25700558AC7 /* ViewController.h */,
-				C4F37E221DE1E25700558AC7 /* ViewController.m */,
-				C47E26EF1E98449F0005EA05 /* CustomLoginView.xib */,
 				C47E26F31E9844E30005EA05 /* CustomLoginViewController.h */,
 				C47E26F41E9844E30005EA05 /* CustomLoginViewController.m */,
 				C40511C61DE1F38B000043CF /* LoginViewController.h */,
 				C40511C71DE1F38B000043CF /* LoginViewController.m */,
 				C40511C91DE1F39A000043CF /* HomeViewController.h */,
 				C40511CA1DE1F39A000043CF /* HomeViewController.m */,
-				C47662B71DEF884000E70786 /* UserSettingsTableViewController.h */,
-				C47662B81DEF884000E70786 /* UserSettingsTableViewController.m */,
+				C4E2C6F81ECA497D00ECD4A5 /* HomeCollectionViewCell.h */,
+				C4E2C6F91ECA497D00ECD4A5 /* HomeCollectionViewCell.m */,
 				C410E0A61DF0D66E00C24118 /* ComposeSkillTableViewController.h */,
 				C410E0A71DF0D66E00C24118 /* ComposeSkillTableViewController.m */,
 				C410E0A31DF0C20F00C24118 /* BlogsCollectionViewController.h */,
 				C410E0A41DF0C20F00C24118 /* BlogsCollectionViewController.m */,
-				C47D65731E9955AC009FA8EA /* Interpersonal.mov */,
-				C4CB58DC1E807D0E0066A047 /* video.mov */,
-				C4E92FEF1EB3DBD8000947FD /* icoFormularioPrincipal@2x.png */,
+				C47662B71DEF884000E70786 /* UserSettingsTableViewController.h */,
+				C47662B81DEF884000E70786 /* UserSettingsTableViewController.m */,
+				C4E2C6F71ECA47D000ECD4A5 /* Sources */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -224,10 +226,10 @@
 				C4E7DCF81DECF551008156C2 /* FTWCache.m */,
 				C48E94D91DECF4E5005836B0 /* NSString+MD5.h */,
 				C48E94DA1DECF4F0005836B0 /* NSString+MD5.m */,
-				C443FEE51E904CC9005A2271 /* SkillDataModel.h */,
-				C443FEE61E904CC9005A2271 /* SkillDataModel.m */,
 				C49540E71E9065180066D787 /* User.h */,
 				C49540E81E9065180066D787 /* User.m */,
+				C42C25721EC8ABBE00962291 /* Constants.h */,
+				C42C25731EC8ABBE00962291 /* Constants.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -251,6 +253,27 @@
 				C43877C51E9029C200CBADA8 /* VineLogo@2x.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		C4ABFE661ECA777500570132 /* FireBaseapi */ = {
+			isa = PBXGroup;
+			children = (
+				C443FEE51E904CC9005A2271 /* SkillDataModel.h */,
+				C443FEE61E904CC9005A2271 /* SkillDataModel.m */,
+			);
+			name = FireBaseapi;
+			sourceTree = "<group>";
+		};
+		C4E2C6F71ECA47D000ECD4A5 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C43877B81E9029B300CBADA8 /* images */,
+				C47D65731E9955AC009FA8EA /* Interpersonal.mov */,
+				C4CB58DC1E807D0E0066A047 /* video.mov */,
+				C419B6341EBD091800950E30 /* Motivational.mov */,
+				C4E92FEF1EB3DBD8000947FD /* icoFormularioPrincipal@2x.png */,
+			);
+			name = Sources;
 			sourceTree = "<group>";
 		};
 		C4F37E0F1DE1E25700558AC7 = {
@@ -282,8 +305,8 @@
 				C4F37E1E1DE1E25700558AC7 /* AppDelegate.h */,
 				C4F37E1F1DE1E25700558AC7 /* AppDelegate.m */,
 				C410E0A11DF0C17A00C24118 /* Controllers */,
+				C4ABFE661ECA777500570132 /* FireBaseapi */,
 				C410E0A21DF0C19500C24118 /* DataModel */,
-				C4F37E241DE1E25700558AC7 /* Main.storyboard */,
 				C4F37E1B1DE1E25700558AC7 /* Supporting Files */,
 			);
 			path = KnowledgeMatters;
@@ -292,10 +315,11 @@
 		C4F37E1B1DE1E25700558AC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C43877B81E9029B300CBADA8 /* images */,
 				C4F37E1C1DE1E25700558AC7 /* main.m */,
 				C4F37E271DE1E25700558AC7 /* Assets.xcassets */,
 				C4F37E291DE1E25700558AC7 /* LaunchScreen.storyboard */,
+				C4F37E241DE1E25700558AC7 /* Main.storyboard */,
+				C47E26EF1E98449F0005EA05 /* CustomLoginView.xib */,
 				C48E94D71DECEBDF005836B0 /* GoogleService-Info.plist */,
 				C4F37E2C1DE1E25700558AC7 /* Info.plist */,
 			);
@@ -448,6 +472,7 @@
 				C47E26F01E98449F0005EA05 /* CustomLoginView.xib in Resources */,
 				C43877CA1E9029C200CBADA8 /* SignInTwitterButton.png in Resources */,
 				C4F37E2B1DE1E25700558AC7 /* LaunchScreen.storyboard in Resources */,
+				C419B6351EBD091800950E30 /* Motivational.mov in Resources */,
 				C48E94D81DECEBDF005836B0 /* GoogleService-Info.plist in Resources */,
 				C4F37E281DE1E25700558AC7 /* Assets.xcassets in Resources */,
 				C43877CE1E9029C200CBADA8 /* Default-568h@2x.png in Resources */,
@@ -631,14 +656,15 @@
 				C48E94DB1DECF4F0005836B0 /* NSString+MD5.m in Sources */,
 				C47662B91DEF884000E70786 /* UserSettingsTableViewController.m in Sources */,
 				C40511C81DE1F38B000043CF /* LoginViewController.m in Sources */,
-				C4F37E231DE1E25700558AC7 /* ViewController.m in Sources */,
 				C47E26F51E9844E30005EA05 /* CustomLoginViewController.m in Sources */,
+				C42C25741EC8ABBE00962291 /* Constants.m in Sources */,
 				C410E0A51DF0C20F00C24118 /* BlogsCollectionViewController.m in Sources */,
 				C4F37E201DE1E25700558AC7 /* AppDelegate.m in Sources */,
 				C410E0A81DF0D66E00C24118 /* ComposeSkillTableViewController.m in Sources */,
 				C40511CB1DE1F39A000043CF /* HomeViewController.m in Sources */,
 				C49540E91E9065180066D787 /* User.m in Sources */,
 				C443FEE71E904CC9005A2271 /* SkillDataModel.m in Sources */,
+				C4E2C6FA1ECA497D00ECD4A5 /* HomeCollectionViewCell.m in Sources */,
 				C4F37E1D1DE1E25700558AC7 /* main.m in Sources */,
 				C4E7DCF91DECF551008156C2 /* FTWCache.m in Sources */,
 			);

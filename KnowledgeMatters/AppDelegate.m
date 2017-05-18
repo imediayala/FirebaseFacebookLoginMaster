@@ -25,6 +25,7 @@
     //declare FBsdk delegate
     
     [FIRApp configure];
+    
 
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];

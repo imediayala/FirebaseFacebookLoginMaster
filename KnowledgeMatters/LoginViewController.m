@@ -14,6 +14,8 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "CustomLoginViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @import MediaPlayer;
 @import Firebase;
@@ -27,7 +29,7 @@
 -(IBAction)connectedActionsViewTouchedUp:(UIButton*) button;
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-
+@property (strong, nonatomic) UIImageView* blurImage;
 @property (weak, nonatomic) IBOutlet UILabel *userLabelPlaceholder;
 
 @end
@@ -37,10 +39,7 @@
     
     NSURL* videoURL;
     AVQueuePlayer* queue;
-
 }
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,12 +48,10 @@
 
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
-        
     }
 
     [self playAndLoopLoginVideo];
-    
-    [self blurImage];
+    [self initializeBlurImage];
     
     // Instantiate a referenced view (assuming outlet has hooked up in XIB).
     [[NSBundle mainBundle] loadNibNamed:@"CustomLoginView" owner:self options:nil];
@@ -62,44 +59,26 @@
     // Controller's outlet has been bound during nib loading, so we can access view trough the outlet.
     [self.view addSubview:self.referencedView];
     
+    //Uitextfield Delegate and Attributes
     [self.userTextField setDelegate:self];
-
+    [self.passwordTextField setDelegate:self];
+    
+    _userTextField.layer.borderColor=[[UIColor whiteColor]CGColor];
+    _userTextField.layer.borderWidth=1.0;
+    _passwordTextField.layer.borderColor=[[UIColor whiteColor]CGColor];
+    _passwordTextField.layer.borderWidth=1.0;
     
     // Create LoginButton Facebook
-    
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     loginButton.delegate = self;
     
     // Optional: Place the button in the center of your view.
-    loginButton.center = CGPointMake(200,700);
+    loginButton.center = CGPointMake(200,600);
     [self.view addSubview:loginButton];
     loginButton.readPermissions =
     @[@"public_profile", @"email", @"user_friends"];
-    
-
 
 }
-
-
-//-(void) awakeFromNib{
-//
-//
-//    self.userTextField.placeholder = @"Usuario";
-//    
-//    // Extract attributes
-//    NSDictionary * attributes = (NSMutableDictionary *)[ (NSAttributedString *)self.userTextField.attributedPlaceholder attributesAtIndex:0 effectiveRange:NULL];
-//    NSMutableDictionary * newAttributes = [[NSMutableDictionary alloc] initWithDictionary:attributes];
-//    [newAttributes setObject:[UIColor redColor] forKey:NSForegroundColorAttributeName];
-//    
-//    // Set new text with extracted attributes
-//    self.userTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[self.userTextField.attributedPlaceholder string] attributes:newAttributes];
-//
-//
-//
-//
-//}
-
-
 
 
 -(IBAction)connectedActionsViewTouchedUp:(UIButton*) button
@@ -112,13 +91,6 @@
 }
 
 
--(IBAction)updateValue:(id)sender{
-    float sVaLue = _slider.value;
-    _visualEffectView.alpha = sVaLue;
-}
-
-
-
 -(bool) textFieldShouldReturn:(UITextField *)textField{
     
     if (textField.tag==1) {
@@ -129,24 +101,19 @@
         [self checksUserCredentials];
     }
     return YES;
-
 }
+
+
 -(bool)textFieldShouldBeginEditing:(UITextField *)textField{
 
     if ([self.userTextField.text isEqualToString:@""]) {
-        self.userLabelPlaceholder.hidden = YES;
 
     }
-
     return YES;
 }
 
 
 -(bool)textFieldShouldEndEditing:(UITextField *)textField{
-    
-    if ([self.userTextField.text isEqualToString:@""]) {
-        self.userLabelPlaceholder.hidden = NO;
-    }
     
     return YES;
 }
@@ -155,7 +122,6 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateButton:) name:UITextFieldTextDidChangeNotification object:nil];
 
-
     return YES;
 }
 
@@ -163,18 +129,48 @@
 
     NSLog(@"Watching TextFields Characters");
     
-    if ([self.userTextField.text isEqualToString:@""]) {
-        self.userLabelPlaceholder.hidden = NO;
-    }else{
-        if (![self.userTextField.text isEqualToString:@""]) {
-            self.userLabelPlaceholder.hidden = YES;
+//    if ([self.userTextField.text isEqualToString:@""]) {
+//        self.userLabelPlaceholder.hidden = YES;
+//    }else{
+//        if (![self.userTextField.text isEqualToString:@""]) {
+//            self.userLabelPlaceholder.hidden = YES;
+//
+//        }
+//    }
 
-        }
-    }
+}
 
+
+-(void) initializeBlurImage{
     
+    //Add a backgroun picture
+    
+      self.blurImage = [[UIImageView alloc] initWithFrame:CGRectMake(0 , 0, [UIScreen mainScreen].bounds.size.width , [UIScreen mainScreen].bounds.size.height)];
+      self.blurImage.image = [UIImage imageNamed:@"icoFormularioPrincipal@2x.png"];
+    self.blurImage.backgroundColor = [UIColor blueColor];
+      [self.view addSubview:self.blurImage];
+    
+    _visualEffectView = [[UIVisualEffectView alloc] initWithEffect:
+                        [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    _visualEffectView.frame = self.blurImage.frame;
+    _visualEffectView.alpha = 20;
+    [self.view addSubview:_visualEffectView];
+    
+//    CGPoint userPositionX = self.visualEffectView.frame.origin;
+//    CGPoint userPositionY = self.visualEffectView.frame.origin;
+    //create path
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRect:self.blurImage.bounds];
+//    UIBezierPath *otherPath = [[UIBezierPath bezierPathWithRect:CGRectMake(userPositionX.x, userPositionY.y, self.visualEffectView.frame.size.width, self.visualEffectView.frame.size.height)] bezierPathByReversingPath];
+//    [maskPath appendPath:otherPath];
+    
+    //set mask
+//    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+////    maskLayer.path = maskPath.CGPath;
+//    [_visualEffectView.layer setMask:maskLayer];
+
     
 }
+
 
 -(void) checksUserCredentials{
     //    [usuarioTextField resignFirstResponder];
@@ -190,6 +186,8 @@
     } else {
         NSLog(@"El usuario o la contraseña no son válidos");
     }
+    [self performSegueWithIdentifier:@"goHome" sender:self];
+
     
 }
 
@@ -222,16 +220,6 @@
                             [queue insertItem:video afterItem:nil];
                         }];
     
-//    if (self.player.status == AVPlayerStatusReadyToPlay) {
-//        if([((AVPlayerLayer *)[self.videoContainer layer]).videoGravity isEqualToString:AVLayerVideoGravityResizeAspect])
-//            ((AVPlayerLayer *)[self.videoContainer layer]).videoGravity = AVLayerVideoGravityResizeAspectFill;
-//        else
-//            ((AVPlayerLayer *)[self.videoContainer layer]).videoGravity = AVLayerVideoGravityResizeAspect;
-//        
-//        ((AVPlayerLayer *)[self.videoContainer layer]).bounds = ((AVPlayerLayer *)[self.videoContainer layer]).bounds;
-//    }
-//
-
 }
 
 
@@ -239,9 +227,6 @@
 didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
               error:(NSError *)error {
     if (error == nil) {
-        
-        
-        
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginButton:didCompleteWithResult:error:) name: FBSDKAccessTokenDidChangeNotification object:nil];
         
@@ -325,37 +310,5 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 */
 
 
-
--(void) blurImage{
-    
-    //VisableRect = 100,100,200,200
-    
-    //Add a backgroun picture
-    UIImageView* imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    imageV.image = [UIImage imageNamed:@"icoFormularioPrincipal@2x.png"];
-    [self.view addSubview:imageV];
-    
-    _visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-    _visualEffectView.frame = imageV.frame;
-    _visualEffectView.alpha = 1.0;
-    [self.view addSubview:_visualEffectView];
-    
-    //create path
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRect:imageV.bounds];
-//    UIBezierPath *otherPath = [[UIBezierPath bezierPathWithRect:CGRectMake(100, 100, 200, 200)] bezierPathByReversingPath];
-//    [maskPath appendPath:otherPath];
-    
-    //set mask
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.path = maskPath.CGPath;
-    [_visualEffectView.layer setMask:maskLayer];
-    
-//    _slider = [[UISlider alloc] initWithFrame:CGRectMake(0, imageV.frame.size.height, 200, 20)];
-//    _slider.minimumValue = 0;
-//    _slider.maximumValue = 1;
-//    _slider.value = 1;
-//    [_slider addTarget:self action:@selector(updateValue:) forControlEvents:UIControlEventValueChanged];
-//    [self.view addSubview:_slider];
-}
 
 @end

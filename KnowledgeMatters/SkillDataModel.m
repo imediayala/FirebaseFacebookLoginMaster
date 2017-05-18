@@ -8,8 +8,12 @@
 
 #import "SkillDataModel.h"
 #import "User.h"
+#import "Constants.h"
+@import Firebase;
+
 
 @implementation SkillDataModel
+
 
 
 -(NSString *) getUserName {
@@ -21,7 +25,7 @@
     }
 }
 
--(void)initWithName:(NSString*)nameSkill andDescription: (NSString*)descriptionSkill andUserId:(NSString*)userId{
+-(void)initWithName:(NSString*)nameSkill andDescription: (NSString*)descriptionSkill andUserId:(NSString*)userId andUrl: (NSString*)url skillStartedDate:(NSString*) dateString{
 
     // Create new post at /user-posts/$userid/$postid and at
     // /posts/$postid simultaneously
@@ -29,7 +33,10 @@
     NSString *key = [[_ref child:@"posts"] childByAutoId].key;
     NSDictionary *post = @{@"uid": userId,
                            @"skillname": nameSkill,
-                           @"skilldescription": descriptionSkill};
+                           @"skilldescription": descriptionSkill,
+                           @"photoUrl":url,
+                           @"skillStartedAtDate":dateString};
+    
     NSDictionary *childUpdates = @{[@"/skills/" stringByAppendingString:key]: post,
                                    [NSString stringWithFormat:@"/user-skills/%@/%@/", userId, key]: post};
     
@@ -43,7 +50,7 @@
 }
 
 
--(void)sendPost:(NSString *)skill andDescription:(NSString *)description{
+-(void)sendPost:(NSString *)skill andDescription:(NSString *)description urlFromPicker:(NSString*) url{
     
     // Reference for FiDataBase
     
@@ -63,12 +70,45 @@
     
         [self initWithName:skill
             andDescription:description
-                 andUserId:userID];
+                 andUserId:userID
+                    andUrl:url
+          skillStartedDate:dateString];
         
     }];
     
     
 }
+
+//- (void)sendCoverImage:(NSDictionary *)data {
+//    
+//    NSMutableDictionary *mdata = [data mutableCopy];
+//    FIRUser *user = [FIRAuth auth].currentUser;
+//    
+//    NSString  *userName = user.displayName;
+//    mdata[MessageFieldsname] = userName;
+//    
+//    // Push data to Firebase Database
+//    [[[_ref child:@"SkillsCover"] childByAutoId] setValue:mdata];
+//    
+//    
+//}
+
+//- (NSMutableArray*) reloadMessages {
+//    
+//        //Create Array to store objects from firebase
+//        NSMutableArray *skillsArray = [[NSMutableArray alloc] init];
+//
+//        // Listen for new messages in the Firebase database
+//    self->skillsCoverHandle = [[_ref child:@"posts"] observeEventType:FIRDataEventTypeChildAdded withBlock:^(FIRDataSnapshot *snapshot) {
+//        
+//        [skillsArray insertObject:snapshot atIndex:0];
+//
+//        
+//    }];
+// 
+//    return skillsArray;
+//}
+
 
 
 @end
