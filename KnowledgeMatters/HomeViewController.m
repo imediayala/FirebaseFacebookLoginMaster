@@ -9,8 +9,8 @@
 #import "FTWCache.h"
 #import "HomeViewController.h"
 #import <FBSDKCoreKit.h>
-#import "HomeCollectionViewCell.h"
 #import "Constants.h"
+#import "HomeMainCollectionViewCell.h"
 @import Firebase;
 
 
@@ -18,6 +18,7 @@
     
     NSArray *recipePhotos;
 }
+@property (strong, nonatomic) IBOutlet UIView *referencedView;
 
 
 @end
@@ -66,21 +67,49 @@
     [self loadImageFromURL];
     [self getSkills];
     
-    
+    imageBox.layer.masksToBounds = YES;
+    imageBox.layer.cornerRadius = 6;
+    imageBox.layer.borderWidth = 2;
     
 
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    [self.skillsRef removeAllObservers];
+    
 }
 
 -(void) initialize{
     
-    NSString *skillCount = [NSString stringWithFormat: @"%ld", (long)self.skillsDataArray.count];
-    self.skillCount.text = skillCount;
+    UINib *cellNib = [UINib nibWithNibName:@"HomeMainCollectionViewCell" bundle:nil];
+    [self.collectionTable registerNib:cellNib forCellWithReuseIdentifier:@"claimCellReuse"];
+    self.collectionTable.allowsSelection = YES;
+    self.collectionTable.allowsMultipleSelection = NO;
+    
+    // Instantiate a referenced view (assuming outlet has hooked up in XIB).
+//[[NSBundle mainBundle] loadNibNamed:@"SkillLayOverViewController" owner:self options:nil];
 
+    // Controller's outlet has been bound during nib loading, so we can access view trough the outlet.
+//    [self.view addSubview:self.referencedView];
+
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
    
+    [self counters];
    }
+
+-(void) counters{
+    
+    NSString *skillCount = [NSString stringWithFormat: @"%ld", (long)self.skillsDataArray.count];
+    self.skillCount.text = skillCount;
+}
 
 -(void) getSkills{
 
@@ -104,14 +133,23 @@
 
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+
+-(NSData*)imagesData {
     
-    [super viewWillDisappear:animated];
+    NSIndexPath *indexPath = nil;
+    FIRDataSnapshot *messageSnapshot = self.skillsDataArray[indexPath.row];
+    NSDictionary<NSString *, NSString *> *message = messageSnapshot.value;
+    NSString *coverImgUrl = message[MessageFieldsphotoUrl];
     
-    [self.skillsRef removeAllObservers];
+    //Get image and put on collectioCell
+    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", coverImgUrl]];
+    NSString *key = [[NSString stringWithFormat:@"%@", coverImgUrl] MD5Hash];
+    NSData *data =  [NSData dataWithContentsOfURL:imageURL];
+    
+    
+    return data;
     
 }
-
 
 
 - (void) loadImageFromURL {
@@ -144,22 +182,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 #pragma mark - Collection view data source
-
-
-
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.skillsDataArray.count;
 }
 
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identifier = @"Cell";
+    static NSString *identifier = @"claimCellReuse";
     [self initialize];
     
-    HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    HomeMainCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
+    //Style cells
+    cell.layer.masksToBounds = YES;
+    cell.layer.cornerRadius = 6;
+    cell.layer.borderWidth = 2;
+    
+    cell.layer.borderColor = [[UIColor blackColor]CGColor];
+
 //    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
 //    recipeImageView.image = [UIImage imageNamed:[recipePhotos objectAtIndex:indexPath.row]];
     
@@ -168,7 +211,7 @@
     NSString *name = message[MessageFieldsname];
     NSString *text = message[MessageFieldsSkillName];
     NSString *coverImgUrl = message[MessageFieldsphotoUrl];
-    cell.skillNameLabel.text = [NSString stringWithFormat:@"%@", text];
+    cell.cellSkillLabel.text = [NSString stringWithFormat:@"%@", text];
 
     //Get image and put on collectioCell
    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", coverImgUrl]];
@@ -177,17 +220,17 @@
    NSData *data =  [NSData dataWithContentsOfURL:imageURL];
    if (data) {
        UIImage *image = [UIImage imageWithData:data];
-       cell.coverImageBox.image = image;
+       cell.cellImageBox.image = image;
        [self.activitySpinner stopAnimating];
 
     } else {
-        cell.coverImageBox.image = [UIImage imageNamed:@"icoFormularioPrincipal@2x.png"];
+        cell.cellImageBox.image = [UIImage imageNamed:@"icoFormularioPrincipal@2x.png"];
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
        dispatch_async(queue, ^{
            NSData *data = [NSData dataWithContentsOfURL:imageURL];
            [FTWCache setObject:data forKey:key];
           UIImage *image = [UIImage imageWithData:data];
-               cell.coverImageBox.image = image;
+               cell.cellImageBox.image = image;
             });    
     }
     
@@ -195,28 +238,35 @@
     return cell;
 }
 
--(NSData*)imagesData {
-
-    NSIndexPath *indexPath = nil;
-    FIRDataSnapshot *messageSnapshot = self.skillsDataArray[indexPath.row];
-    NSDictionary<NSString *, NSString *> *message = messageSnapshot.value;
-    NSString *coverImgUrl = message[MessageFieldsphotoUrl];
+- (CGSize)collectionView :( UICollectionView *)collectionView
+                  layout :( UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath :( NSIndexPath *)indexPath
+{
     
-    //Get image and put on collectioCell
-    
-    
-    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", coverImgUrl]];
-    NSString *key = [[NSString stringWithFormat:@"%@", coverImgUrl] MD5Hash];
-    
-    NSData *data =  [NSData dataWithContentsOfURL:imageURL];
-
-        
-   
-
-    return data;
-
+    // Adjust cell size for orientation
+    return CGSizeMake(320, 140);
 }
 
+-(void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+//    UINib *layover = [UINib nibWithNibName:@"SkillLayOverViewController" bundle:nil];
+//    [layover instantiateWithOwner:self options:nil];
+   
+    UIView *containerView = [[[NSBundle mainBundle] loadNibNamed:@"SkillLayOverViewController" owner:self options:nil] lastObject]
+;
+    
+    CGRect newFrame = CGRectMake( self.view.frame.origin.x, self.view.frame.origin.y, 200, 200);
+    
+    containerView.center = CGPointMake(120, 200);
+
+    [self.collectionTable addSubview:containerView];
+    
+    
+    
+    
+
+}
 
 /*
 #pragma mark - Navigation

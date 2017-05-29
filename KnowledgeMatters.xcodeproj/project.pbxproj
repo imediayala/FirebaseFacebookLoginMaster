@@ -29,6 +29,8 @@
 		C43877D11E9029C200CBADA8 /* VineLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C43877C41E9029C200CBADA8 /* VineLogo.png */; };
 		C43877D21E9029C200CBADA8 /* VineLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C43877C51E9029C200CBADA8 /* VineLogo@2x.png */; };
 		C443FEE71E904CC9005A2271 /* SkillDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C443FEE61E904CC9005A2271 /* SkillDataModel.m */; };
+		C46254561EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C46254541EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.m */; };
+		C46254571EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C46254551EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.xib */; };
 		C47662B91DEF884000E70786 /* UserSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47662B81DEF884000E70786 /* UserSettingsTableViewController.m */; };
 		C47662BB1DEF8C0600E70786 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47662BA1DEF8C0600E70786 /* MapKit.framework */; };
 		C47D65741E9955AC009FA8EA /* Interpersonal.mov in Resources */ = {isa = PBXBuildFile; fileRef = C47D65731E9955AC009FA8EA /* Interpersonal.mov */; };
@@ -38,11 +40,12 @@
 		C47E26F51E9844E30005EA05 /* CustomLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47E26F41E9844E30005EA05 /* CustomLoginViewController.m */; };
 		C47E26F61E9844E30005EA05 /* CustomLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47E26F41E9844E30005EA05 /* CustomLoginViewController.m */; };
 		C47E26F71E9844E30005EA05 /* CustomLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47E26F41E9844E30005EA05 /* CustomLoginViewController.m */; };
+		C47ECD231EDB4B96006C51A5 /* SkillLayOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47ECD211EDB4B96006C51A5 /* SkillLayOverViewController.m */; };
+		C47ECD241EDB4B96006C51A5 /* SkillLayOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C47ECD221EDB4B96006C51A5 /* SkillLayOverViewController.xib */; };
 		C48E94D81DECEBDF005836B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C48E94D71DECEBDF005836B0 /* GoogleService-Info.plist */; };
 		C48E94DB1DECF4F0005836B0 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C48E94DA1DECF4F0005836B0 /* NSString+MD5.m */; };
 		C49540E91E9065180066D787 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C49540E81E9065180066D787 /* User.m */; };
 		C4CB58DD1E807D0E0066A047 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = C4CB58DC1E807D0E0066A047 /* video.mov */; };
-		C4E2C6FA1ECA497D00ECD4A5 /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E2C6F91ECA497D00ECD4A5 /* HomeCollectionViewCell.m */; };
 		C4E7DCF91DECF551008156C2 /* FTWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E7DCF81DECF551008156C2 /* FTWCache.m */; };
 		C4E92FF01EB3DBD8000947FD /* icoFormularioPrincipal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E92FEF1EB3DBD8000947FD /* icoFormularioPrincipal@2x.png */; };
 		C4F37E1D1DE1E25700558AC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F37E1C1DE1E25700558AC7 /* main.m */; };
@@ -109,6 +112,9 @@
 		C43877D31E902A1D00CBADA8 /* background.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.mp4; sourceTree = "<group>"; };
 		C443FEE51E904CC9005A2271 /* SkillDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillDataModel.h; sourceTree = "<group>"; };
 		C443FEE61E904CC9005A2271 /* SkillDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillDataModel.m; sourceTree = "<group>"; };
+		C46254531EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMainCollectionViewCell.h; sourceTree = "<group>"; };
+		C46254541EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMainCollectionViewCell.m; sourceTree = "<group>"; };
+		C46254551EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeMainCollectionViewCell.xib; sourceTree = "<group>"; };
 		C47662B71DEF884000E70786 /* UserSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettingsTableViewController.h; sourceTree = "<group>"; };
 		C47662B81DEF884000E70786 /* UserSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettingsTableViewController.m; sourceTree = "<group>"; };
 		C47662BA1DEF8C0600E70786 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -116,14 +122,15 @@
 		C47E26EF1E98449F0005EA05 /* CustomLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomLoginView.xib; sourceTree = "<group>"; };
 		C47E26F31E9844E30005EA05 /* CustomLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLoginViewController.h; sourceTree = "<group>"; };
 		C47E26F41E9844E30005EA05 /* CustomLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLoginViewController.m; sourceTree = "<group>"; };
+		C47ECD201EDB4B96006C51A5 /* SkillLayOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillLayOverViewController.h; sourceTree = "<group>"; };
+		C47ECD211EDB4B96006C51A5 /* SkillLayOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillLayOverViewController.m; sourceTree = "<group>"; };
+		C47ECD221EDB4B96006C51A5 /* SkillLayOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillLayOverViewController.xib; sourceTree = "<group>"; };
 		C48E94D71DECEBDF005836B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C48E94D91DECF4E5005836B0 /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		C48E94DA1DECF4F0005836B0 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		C49540E71E9065180066D787 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		C49540E81E9065180066D787 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C4CB58DC1E807D0E0066A047 /* video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video.mov; sourceTree = "<group>"; };
-		C4E2C6F81ECA497D00ECD4A5 /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
-		C4E2C6F91ECA497D00ECD4A5 /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
 		C4E7DCF71DECF551008156C2 /* FTWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTWCache.h; sourceTree = "<group>"; };
 		C4E7DCF81DECF551008156C2 /* FTWCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTWCache.m; sourceTree = "<group>"; };
 		C4E92FEF1EB3DBD8000947FD /* icoFormularioPrincipal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icoFormularioPrincipal@2x.png"; sourceTree = "<group>"; };
@@ -200,14 +207,12 @@
 		C410E0A11DF0C17A00C24118 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C47E26F31E9844E30005EA05 /* CustomLoginViewController.h */,
-				C47E26F41E9844E30005EA05 /* CustomLoginViewController.m */,
+				C46254521EDB2D3700C41FB1 /* Cell Views */,
+				C47ECD1C1EDB4B0D006C51A5 /* CUSTOM VIEWS */,
 				C40511C61DE1F38B000043CF /* LoginViewController.h */,
 				C40511C71DE1F38B000043CF /* LoginViewController.m */,
 				C40511C91DE1F39A000043CF /* HomeViewController.h */,
 				C40511CA1DE1F39A000043CF /* HomeViewController.m */,
-				C4E2C6F81ECA497D00ECD4A5 /* HomeCollectionViewCell.h */,
-				C4E2C6F91ECA497D00ECD4A5 /* HomeCollectionViewCell.m */,
 				C410E0A61DF0D66E00C24118 /* ComposeSkillTableViewController.h */,
 				C410E0A71DF0D66E00C24118 /* ComposeSkillTableViewController.m */,
 				C410E0A31DF0C20F00C24118 /* BlogsCollectionViewController.h */,
@@ -253,6 +258,27 @@
 				C43877C51E9029C200CBADA8 /* VineLogo@2x.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		C46254521EDB2D3700C41FB1 /* Cell Views */ = {
+			isa = PBXGroup;
+			children = (
+				C46254531EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.h */,
+				C46254541EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.m */,
+			);
+			name = "Cell Views";
+			sourceTree = "<group>";
+		};
+		C47ECD1C1EDB4B0D006C51A5 /* CUSTOM VIEWS */ = {
+			isa = PBXGroup;
+			children = (
+				C47E26F31E9844E30005EA05 /* CustomLoginViewController.h */,
+				C47E26F41E9844E30005EA05 /* CustomLoginViewController.m */,
+				C47ECD201EDB4B96006C51A5 /* SkillLayOverViewController.h */,
+				C47ECD211EDB4B96006C51A5 /* SkillLayOverViewController.m */,
+				C47ECD221EDB4B96006C51A5 /* SkillLayOverViewController.xib */,
+			);
+			name = "CUSTOM VIEWS";
 			sourceTree = "<group>";
 		};
 		C4ABFE661ECA777500570132 /* FireBaseapi */ = {
@@ -320,6 +346,7 @@
 				C4F37E291DE1E25700558AC7 /* LaunchScreen.storyboard */,
 				C4F37E241DE1E25700558AC7 /* Main.storyboard */,
 				C47E26EF1E98449F0005EA05 /* CustomLoginView.xib */,
+				C46254551EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.xib */,
 				C48E94D71DECEBDF005836B0 /* GoogleService-Info.plist */,
 				C4F37E2C1DE1E25700558AC7 /* Info.plist */,
 			);
@@ -468,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C43877C61E9029C200CBADA8 /* SignInMailButton.png in Resources */,
+				C46254571EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.xib in Resources */,
 				C43877D01E9029C200CBADA8 /* Icon@2x.png in Resources */,
 				C47E26F01E98449F0005EA05 /* CustomLoginView.xib in Resources */,
 				C43877CA1E9029C200CBADA8 /* SignInTwitterButton.png in Resources */,
@@ -481,6 +509,7 @@
 				C43877CC1E9029C200CBADA8 /* SignInTwitterButtonTap.png in Resources */,
 				C47D65741E9955AC009FA8EA /* Interpersonal.mov in Resources */,
 				C43877D21E9029C200CBADA8 /* VineLogo@2x.png in Resources */,
+				C47ECD241EDB4B96006C51A5 /* SkillLayOverViewController.xib in Resources */,
 				C4CB58DD1E807D0E0066A047 /* video.mov in Resources */,
 				C43877D11E9029C200CBADA8 /* VineLogo.png in Resources */,
 				C4F37E261DE1E25700558AC7 /* Main.storyboard in Resources */,
@@ -664,8 +693,9 @@
 				C40511CB1DE1F39A000043CF /* HomeViewController.m in Sources */,
 				C49540E91E9065180066D787 /* User.m in Sources */,
 				C443FEE71E904CC9005A2271 /* SkillDataModel.m in Sources */,
-				C4E2C6FA1ECA497D00ECD4A5 /* HomeCollectionViewCell.m in Sources */,
+				C46254561EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.m in Sources */,
 				C4F37E1D1DE1E25700558AC7 /* main.m in Sources */,
+				C47ECD231EDB4B96006C51A5 /* SkillLayOverViewController.m in Sources */,
 				C4E7DCF91DECF551008156C2 /* FTWCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

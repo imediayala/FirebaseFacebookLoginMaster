@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @import Firebase;
 
-@interface HomeViewController : UIViewController<UINavigationControllerDelegate, UINavigationBarDelegate>
+@interface HomeViewController : UIViewController<UINavigationControllerDelegate, UINavigationBarDelegate,UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageBox;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
