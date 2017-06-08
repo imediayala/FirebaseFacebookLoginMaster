@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SkillLayOverViewController : UIViewController
+@interface SkillLayOverViewController : UIView
 
 @end

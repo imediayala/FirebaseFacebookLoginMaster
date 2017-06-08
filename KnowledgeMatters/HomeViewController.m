@@ -11,6 +11,7 @@
 #import <FBSDKCoreKit.h>
 #import "Constants.h"
 #import "HomeMainCollectionViewCell.h"
+#import "SkillLayOverViewController.h"
 @import Firebase;
 
 
@@ -18,7 +19,12 @@
     
     NSArray *recipePhotos;
 }
-@property (strong, nonatomic) IBOutlet UIView *referencedView;
+@property (strong, nonatomic) UIImageView *skillCoverImage;
+@property (strong, nonatomic) FIRStorageReference *storageRef;
+@property(strong, nonatomic) FIRStorage *storage;
+@property(strong, nonatomic) NSString *skillUrlString;
+@property(nonatomic) NSInteger imageCount;
+@property (strong, nonatomic) IBOutlet UIView *skillPopView;
 
 
 @end
@@ -28,8 +34,18 @@
 @synthesize emailLabel;
 @synthesize imageBox;
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.skillCoverImage = [[UIImageView alloc]init]; ;
+
+    
+
+    // Get a reference to the storage service, using the default Firebase App
+    self.storage = [FIRStorage storage];
+    // Create a storage reference from our storage service
+    self.storageRef = [self.storage referenceForURL:@"gs://knowledge-150922.appspot.com"];
     
     // Initialize recipe image array
     recipePhotos = [NSArray arrayWithObjects:@"angry_birds_cake.jpg", @"creme_brelee.jpg", @"egg_benedict.jpg", @"full_breakfast.jpg", @"green_tea.jpg", @"ham_and_cheese_panini.jpg", @"ham_and_egg_sandwich.jpg", @"hamburger.jpg", @"instant_noodle_with_egg.jpg", @"japanese_noodle_with_pork.jpg", @"mushroom_risotto.jpg", @"noodle_with_bbq_pork.jpg", @"starbucks_coffee.jpg", @"thai_shrimp_cake.jpg", @"vegetable_curry.jpg", @"white_chocolate_donut.jpg", nil];
@@ -67,13 +83,22 @@
     [self loadImageFromURL];
     [self getSkills];
     
-    imageBox.layer.masksToBounds = YES;
     imageBox.layer.cornerRadius = 6;
-    imageBox.layer.borderWidth = 2;
+    imageBox.layer.masksToBounds = YES;
+
+//    imageBox.layer.borderWidth = 2;
     
 
 }
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self counters];
+}
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     
@@ -90,26 +115,59 @@
     self.collectionTable.allowsSelection = YES;
     self.collectionTable.allowsMultipleSelection = NO;
     
-    // Instantiate a referenced view (assuming outlet has hooked up in XIB).
-//[[NSBundle mainBundle] loadNibNamed:@"SkillLayOverViewController" owner:self options:nil];
+}
 
-    // Controller's outlet has been bound during nib loading, so we can access view trough the outlet.
-//    [self.view addSubview:self.referencedView];
+-(void) initTaps{
 
+    // Creamos los reconocedores
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(didTap:)];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(didPan:)];
+    
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]
+                                       initWithTarget:self action:@selector(didSwipe:)];
+    
+    // Añadir los gesture recognizers a  la vista
+    [self.skillPopView addGestureRecognizer:pan];
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-   
-    [self counters];
-   }
+#pragma  mark - Taps Actions
+
+-(void) didTap:(UITapGestureRecognizer *) tap{
+    
+    if (tap.state == UIGestureRecognizerStateRecognized) {
+//        UIImageView *crack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"crackedGlass.png"]];
+//        crack.center = [tap locationInView:self.belenView];
+//        [self.belenView addSubview:crack];
+//        
+//        // reproducir un sonido
+//        [self playPunch];
+    }
+}
+
+-(void) didPan:(UIPanGestureRecognizer *)pan{
+    
+    if (pan.state == UIGestureRecognizerStateRecognized) {
+        
+        [self.skillPopView removeFromSuperview];
+    }
+    
+}
+
+#pragma mark INFO SCREEN COUNTERS METHODS
 
 -(void) counters{
     
     NSString *skillCount = [NSString stringWithFormat: @"%ld", (long)self.skillsDataArray.count];
     self.skillCount.text = skillCount;
 }
+
+#pragma mark FIREBASE METHOD FOR LOADING DATA
 
 -(void) getSkills{
 
@@ -177,14 +235,39 @@
     }
     
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)getUrlImage:(NSString*) urlString{
+    
+    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", urlString]];
+    NSURL *imageURLi = [NSURL URLWithString:urlString];
+    NSString *key = [imageURL.absoluteString MD5Hash];
+    NSData *data =  [NSData dataWithContentsOfURL:imageURL];
+    if (data) {
+        UIImage *image = [UIImage imageWithData:data];
+        [self.skillCoverImage setImage:image];
+        
+        self.imageCount = self.imageCount +1;
+        
+        
+    } else {
+        self.skillCoverImage.image = [UIImage imageNamed:@"icoFormularioPrincipal@2x.png"];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^{
+            NSData *data = [NSData dataWithContentsOfURL:imageURLi];
+            [FTWCache setObject:data forKey:key];
+            UIImage *image = [UIImage imageWithData:data];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self.skillCoverImage setImage:image];
+            });
+        });
+    }
+    
+    
 }
 
 
-#pragma mark - Collection view data source
+
+
+#pragma mark - COLLECTION VIEW DATA SOURCE
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.skillsDataArray.count;
@@ -197,46 +280,27 @@
     HomeMainCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     //Style cells
-    cell.layer.masksToBounds = YES;
     cell.layer.cornerRadius = 6;
-    cell.layer.borderWidth = 2;
-    
+    cell.layer.masksToBounds = YES;
     cell.layer.borderColor = [[UIColor blackColor]CGColor];
 
-//    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
-//    recipeImageView.image = [UIImage imageNamed:[recipePhotos objectAtIndex:indexPath.row]];
-    
+    //Get firebase snapshots from array
     FIRDataSnapshot *messageSnapshot = self.skillsDataArray[indexPath.row];
     NSDictionary<NSString *, NSString *> *message = messageSnapshot.value;
-    NSString *name = message[MessageFieldsname];
     NSString *text = message[MessageFieldsSkillName];
     NSString *coverImgUrl = message[MessageFieldsphotoUrl];
     cell.cellSkillLabel.text = [NSString stringWithFormat:@"%@", text];
 
-    //Get image and put on collectioCell
-   NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", coverImgUrl]];
-   NSString *key = [[NSString stringWithFormat:@"%@", coverImgUrl] MD5Hash];
-  // NSData *data = [self imagesData];
-   NSData *data =  [NSData dataWithContentsOfURL:imageURL];
-   if (data) {
-       UIImage *image = [UIImage imageWithData:data];
-       cell.cellImageBox.image = image;
-       [self.activitySpinner stopAnimating];
-
-    } else {
-        cell.cellImageBox.image = [UIImage imageNamed:@"icoFormularioPrincipal@2x.png"];
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-       dispatch_async(queue, ^{
-           NSData *data = [NSData dataWithContentsOfURL:imageURL];
-           [FTWCache setObject:data forKey:key];
-          UIImage *image = [UIImage imageWithData:data];
-               cell.cellImageBox.image = image;
-            });    
+    if (self.skillsDataArray.count > self.imageCount) {
+        
+        [self getUrlImage:coverImgUrl];
     }
     
- 
+    cell.cellImageBox.image = self.skillCoverImage.image;
+
     return cell;
 }
+
 
 - (CGSize)collectionView :( UICollectionView *)collectionView
                   layout :( UICollectionViewLayout *)collectionViewLayout
@@ -244,27 +308,35 @@
 {
     
     // Adjust cell size for orientation
-    return CGSizeMake(320, 140);
+    return CGSizeMake(320, 90);
 }
+
 
 -(void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-//    UINib *layover = [UINib nibWithNibName:@"SkillLayOverViewController" bundle:nil];
-//    [layover instantiateWithOwner:self options:nil];
-   
-    UIView *containerView = [[[NSBundle mainBundle] loadNibNamed:@"SkillLayOverViewController" owner:self options:nil] lastObject]
-;
+    HomeMainCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"claimCellReuse" forIndexPath:indexPath];
     
-    CGRect newFrame = CGRectMake( self.view.frame.origin.x, self.view.frame.origin.y, 200, 200);
+    [[NSBundle mainBundle] loadNibNamed:@"SkillLayOverViewController" owner:self options:nil];
     
-    containerView.center = CGPointMake(120, 200);
+    self.skillPopView = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.origin.x, collectionView.frame.origin.y+15, cell.frame.size.width, collectionView.frame.size.height-15)];
+    
+    self.skillPopView.backgroundColor = [UIColor lightGrayColor];
+    self.skillPopView.layer.cornerRadius = 6;
+    self.skillPopView.layer.masksToBounds = YES;
+    [self.view addSubview:self.skillPopView];
 
-    [self.collectionTable addSubview:containerView];
+    [self.skillPopView setAlpha:0];
+
+    [self initTaps];
     
-    
-    
-    
+    //Animate alpha for overlay view
+    [UIView animateWithDuration:0.5 animations:^{
+
+        [self.skillPopView setAlpha:1];
+        
+    } completion:nil];
+
 
 }
 

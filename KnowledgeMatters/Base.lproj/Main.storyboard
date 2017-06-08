@@ -59,13 +59,13 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pQq-VM-ZyC">
                                 <rect key="frame" x="0.0" y="226" width="375" height="392"/>
-                                <color key="backgroundColor" red="0.81960784313725488" green="0.91764705882352937" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="tintColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="weg-2H-2Ss">
-                                    <size key="itemSize" width="178" height="166"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qTd-Jk-mdc">
+                                    <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="15" minY="15" maxX="15" maxY="15"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
                                 <connections>
@@ -196,7 +196,7 @@
                             <constraint firstItem="bFx-ex-tlF" firstAttribute="leading" secondItem="xb5-bc-yee" secondAttribute="leading" id="yvq-nm-o1F"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="PeopleSkills" id="lTy-Yy-Tza"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="PeopleSkills" id="lTy-Yy-Tza"/>
                     <navigationItem key="navigationItem" title="Blog Profile" id="ifX-iM-FPB">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="n0s-51-1GK"/>
                     </navigationItem>
@@ -441,7 +441,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EzN-QL-3sQ">
-                                                    <rect key="frame" x="128.5" y="8" width="232.5" height="79"/>
+                                                    <rect key="frame" x="128" y="8" width="232.5" height="79"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="502237617.00724399">
                                                         <!--2016-11-30 22:26:57 +0000-->
@@ -540,7 +540,7 @@
         <scene sceneID="OhI-jc-bTm">
             <objects>
                 <collectionViewController id="nRh-35-zAb" customClass="BlogsCollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="a7E-jm-wGz">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="a7E-jm-wGz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

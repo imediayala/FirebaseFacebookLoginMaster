@@ -219,7 +219,6 @@
 				C410E0A41DF0C20F00C24118 /* BlogsCollectionViewController.m */,
 				C47662B71DEF884000E70786 /* UserSettingsTableViewController.h */,
 				C47662B81DEF884000E70786 /* UserSettingsTableViewController.m */,
-				C4E2C6F71ECA47D000ECD4A5 /* Sources */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -276,7 +275,6 @@
 				C47E26F41E9844E30005EA05 /* CustomLoginViewController.m */,
 				C47ECD201EDB4B96006C51A5 /* SkillLayOverViewController.h */,
 				C47ECD211EDB4B96006C51A5 /* SkillLayOverViewController.m */,
-				C47ECD221EDB4B96006C51A5 /* SkillLayOverViewController.xib */,
 			);
 			name = "CUSTOM VIEWS";
 			sourceTree = "<group>";
@@ -332,6 +330,7 @@
 				C4F37E1F1DE1E25700558AC7 /* AppDelegate.m */,
 				C410E0A11DF0C17A00C24118 /* Controllers */,
 				C4ABFE661ECA777500570132 /* FireBaseapi */,
+				C4E2C6F71ECA47D000ECD4A5 /* Sources */,
 				C410E0A21DF0C19500C24118 /* DataModel */,
 				C4F37E1B1DE1E25700558AC7 /* Supporting Files */,
 			);
@@ -346,6 +345,7 @@
 				C4F37E291DE1E25700558AC7 /* LaunchScreen.storyboard */,
 				C4F37E241DE1E25700558AC7 /* Main.storyboard */,
 				C47E26EF1E98449F0005EA05 /* CustomLoginView.xib */,
+				C47ECD221EDB4B96006C51A5 /* SkillLayOverViewController.xib */,
 				C46254551EDB2DEB00C41FB1 /* HomeMainCollectionViewCell.xib */,
 				C48E94D71DECEBDF005836B0 /* GoogleService-Info.plist */,
 				C4F37E2C1DE1E25700558AC7 /* Info.plist */,
